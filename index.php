@@ -64,6 +64,66 @@
             </div>
         </div>
 
+        <div class="card">
+           <div class="card- body">
+
+            <?php
+              $con =mysqli_connect("localhost","root","");
+              $db =mysqli_select_db($con,'phpcrud');
+              
+              $query =" SELECT * FROM employee";
+              $query_run =mysqli_query($con,$query);
+             
+
+              ?>
+           <table class="table table-hover table-dark">
+                <thead>
+                  <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Designation</th>
+                    <th scope="col">Salary</th>
+                  </tr>
+                </thead>
+
+                <?php
+                if($query_run)
+                {
+                  foreach($query_run as $data){
+              
+                ?>
+                 <tbody>
+                  <tr>
+                    <th > <?php echo $data['id'] ?></th>
+                    <td> <?php  echo $data['name'] ?></td>
+                    <td><?php   echo $data['email'] ?></td>
+                    <td><?php  echo $data['designation'] ?></td>
+                    <td><?php  echo $data['salary'] ?></td>
+                  </tr>
+                </tbody>
+
+              <?php
+                  }
+
+                  }
+                else{
+
+              echo"no data found";
+
+                }
+
+              ?>
+              
+                
+              </table>
+        
+        
+        
+        </div>
+        
+        </div>
+
     </div>
 </div>
 
